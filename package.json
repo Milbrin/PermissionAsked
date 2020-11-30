@@ -1,0 +1,53 @@
+{
+  "name": "PermissionAsked",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Georges Sempéré <favouille@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/App/server.ts",
+    "start": "yarn run build && cd build && NODE_ENV=production DEBUG=*:error ts-node ./App/server.js",
+    "build": "yarn run clean && tsc",
+    "launch": "ts/node",
+    "clean": "rimraf build",
+    "test": "NODE_ENV=test mocha -r ts-node/register --exit 'src/Domain/Tests/**/*.test.ts'",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "computed-types": "^1.4.0",
+    "config": "^3.3.2",
+    "cuid": "^2.1.8",
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.0",
+    "prompts": "^2.4.0",
+    "sinon": "^9.2.1",
+    "ts-node": "^9.0.0",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/cuid": "^1.3.1",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^14.14.9",
+    "@types/validator": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "nodemon": "^2.0.6",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2"
+  }
+}
