@@ -1,8 +1,8 @@
+import { ValidationError } from 'computed-types';
 import cuid from 'cuid';
-import { IHashService } from '../../InterfaceServices/User/IHashService';
 import { User, UserDTO, UserValidator } from './index';
 
-export const createUser = async (userProps : any, hashService: IHashService) : Promise<User> => {
+export const createUser = async (userProps : any) : Promise<User> => {
   const id = cuid();
 
   const [errors, user] = UserValidator({
@@ -13,8 +13,7 @@ export const createUser = async (userProps : any, hashService: IHashService) : P
   if (errors || !user) {
     throw errors;
   }
-  const encodedPassword = await hashService.hash(user.password);
-  user.password = encodedPassword;
+
   return Object.freeze(user);
 };
 
@@ -22,7 +21,7 @@ export const transformUserToDTO = (user: User) : UserDTO => {
   const userDTO = {
     id: user.id,
     mail: user.mail,
-    password: user.password,
+    validated: user.validated,
     privileges: user.privileges,
     myFamilyMemberId: user.myFamilyMemberId,
   };
