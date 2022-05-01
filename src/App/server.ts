@@ -1,4 +1,4 @@
 import { makeAuthentification } from '../Domain/Entities/Authentification';
 
-const user = makeAuthentification({ password: 'Karmapolic1', mail: 'favouille@gmail.com' });
+const user = makeAuthentification({ password: 'Example1', mail: 'example@gmail.com' });
 console.log(user);
